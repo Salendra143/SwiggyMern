@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Card from './Card';
 import { Link } from 'react-router-dom';
-import { RestaurantMenuLink } from '../utility/Constants';
+import { apiLink, RestaurantMenuLink } from '../utility/Constants';
 
 const Third = () => {
     const [data, setData] = useState(null);
@@ -9,7 +9,7 @@ const Third = () => {
     const inputValue = useRef(null);
 
     const fetchApi = async () => {
-        const response = await fetch(RestaurantMenuLink);
+        const response = await fetch(apiLink);
         const json = await response.json();
         const restaurants = json.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants;
         setData(restaurants);
